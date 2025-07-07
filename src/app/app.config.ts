@@ -4,12 +4,14 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { simulationReducer } from './core/state/reducer/simulation.reducer';
+import { SimulationEffects } from './core/state/effect/simulation.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
-    provideEffects(),
-    provideStore()
+    // provideStore({ simulation: simulationReducer }),
+    // provideEffects([SimulationEffects]),
   ]
 };
